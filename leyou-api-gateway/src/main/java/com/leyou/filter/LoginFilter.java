@@ -24,7 +24,7 @@ import java.util.List;
  * @Feature: 登录拦截器
  */
 @Component
-//@EnableConfigurationProperties({JwtProperties.class,FilterProperties.class})
+@EnableConfigurationProperties({JwtProperties.class,FilterProperties.class})
 public class LoginFilter extends ZuulFilter {
 
     @Autowired

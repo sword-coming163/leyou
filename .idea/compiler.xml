@@ -24,7 +24,6 @@
         <module name="leyou-registry" />
         <module name="leyou-goods-web" />
         <module name="leyou-user-service" />
-        <module name="leyou-config" />
         <module name="leyou-mongondb" />
         <module name="leyou-upload" />
         <module name="leyou-common" />
@@ -37,6 +36,7 @@
       <module name="leyou-comment" target="1.8" />
       <module name="leyou-comment-interface" target="1.8" />
       <module name="leyou-comment-service" target="1.8" />
+      <module name="leyou-config" target="1.8" />
       <module name="leyou-mongondb" target="1.8" />
       <module name="leyou-review" target="1.8" />
       <module name="leyou-review-interface" target="1.8" />
