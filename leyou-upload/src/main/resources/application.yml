@@ -4,9 +4,8 @@ spring:
   application:
     name: upload-service
   rabbitmq:
-    virtual-host: /leyou
-    username: /leyou
-    password: leyou00.
+    username: guest
+    password: guest
     host: 152.136.125.94
   servlet:
     multipart:

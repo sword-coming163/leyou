@@ -14,14 +14,14 @@ eureka:
     ip-address: 127.0.0.1
     lease-expiration-duration-in-seconds: 10 #10秒不发送九过期
     lease-renewal-interval-in-seconds: 5 #每隔5秒发一次心跳
-leyou:
+ly:
   jwt:
     secret: leyou@Login(Auth}*^31)&heiMa% # 登录校验的密钥
     pubKeyPath: C:\Users\Administrator\Desktop\secret\rsa.pub # 公钥地址
     priKeyPath: C:\Users\Administrator\Desktop\secret\rsa.pri # 私钥地址
-    expire: 30 # 过期时间,单位分钟
+    expire: 3000 # 过期时间,单位分钟
     cookieName: LY_TOKEN
-    cookieMaxAge: 30
+    cookieMaxAge: 300
 
 ribbon:
   ConnectTimeout: 4000 # 连接超时时间(ms)

@@ -17,14 +17,13 @@ spring:
     host: 152.136.125.94
     username: guest
     password: guest
-#    virtual-host: /
-#    template:
-#      retry:
-#        enabled: true
-#        max-interval: 210000ms
-#        initial-interval: 10000ms
-#        multiplier: 2
-#    publisher-confirms: true
+    template:
+      retry:
+        enabled: true
+        max-interval: 210000ms
+        initial-interval: 10000ms
+        multiplier: 2
+    publisher-confirms: true
 eureka:
   client:
     service-url:

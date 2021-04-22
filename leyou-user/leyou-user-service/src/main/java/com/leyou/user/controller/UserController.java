@@ -44,6 +44,7 @@ public class UserController {
      */
     @PostMapping("code")
     public ResponseEntity senVerifyCode(@RequestParam("phone") String phone){
+//        System.out.println(phone);
         Boolean result = this.userService.sendVerifyCode(phone);
         if (result == null || !result){
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

@@ -1,9 +1,8 @@
 package com.leyou.sms.listener;
 
-import com.aliyuncs.dysmsapi.model.v20170525.SendSmsResponse;
-import com.aliyuncs.exceptions.ClientException;
 import com.leyou.sms.pojo.SmsProperties;
 import com.leyou.sms.utils.SmsUtils;
+import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -34,6 +33,7 @@ public class SmsListener {
             key = {"sms.verify.code"}
     ))
     public void listenSms(Map<String,String> msg){
+        System.out.println(msg);
         if (msg == null || msg.size() <= 0){
             //不做处理
             return;
@@ -45,7 +45,7 @@ public class SmsListener {
             //发送消息
             try {
                 SendSmsResponse response = this.smsUtils.sendSms(phone, code, smsProperties.getSignName(), smsProperties.getVerifyCodeTemplate());
-            }catch (ClientException e){
+            }catch (Exception e){
                 return;
             }
         }else {

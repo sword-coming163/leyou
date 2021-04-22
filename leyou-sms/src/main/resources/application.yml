@@ -4,13 +4,21 @@ spring:
   application:
     name: sms-service
   rabbitmq:
-    username: guest
-    password: gueat
     host: 152.136.125.94
-
-leyou:
+    username: guest
+    password: guest
+    template:
+      retry:
+        enabled: true
+        multiplier: 2
+        initial-interval: 10000ms
+        max-interval: 210000ms
+      exchange: leyou.sms.exchange
+    publisher-confirms: true
+    port: 5672
+ly:
   sms:
-    accessKeyId: LTAIc259TULYzaS7
-    accessKeySecret: 1uh79I1UAmwQ4YWsSmOgxw7JEBGA0v
-    signName: 乐优商城
-    verifyCodeTemplate: SMS_148614415
+    accessKeyId: AKIDQcYv20rEajdPu9P4eo23ISk25sQp66d2
+    accessKeySecret: SSDuY2HJBzXuqYCNIx1qpbQwKjibEb9S
+    signName: 张帅博客
+    verifyCodeTemplate: 926879

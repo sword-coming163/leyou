@@ -4,7 +4,7 @@ spring:
   application:
     name: order-service
   datasource:
-    url: jdbc:mysql://152.136.125.94:3306/leyou?useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://152.136.125.94:3306/leyou
     username: root
     password: zhangshuai00.
     hikari:

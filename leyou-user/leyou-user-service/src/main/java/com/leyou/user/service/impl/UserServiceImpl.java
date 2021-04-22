@@ -74,6 +74,7 @@ public class UserServiceImpl implements UserService {
             msg.put("phone",phone);
             msg.put("code",code);
             //2.发送短信
+//            System.out.println("11"+msg);
             this.amqpTemplate.convertAndSend("leyou.sms.exchange","sms.verify.code",msg);
 
             //3.将code存入redis

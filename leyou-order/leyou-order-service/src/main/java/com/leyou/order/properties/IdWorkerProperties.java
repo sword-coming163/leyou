@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
  **/
 //@ConfigurationProperties(prefix = "leyou.worker")
 @Configuration
-@RefreshScope
 public class IdWorkerProperties {
 
     /**

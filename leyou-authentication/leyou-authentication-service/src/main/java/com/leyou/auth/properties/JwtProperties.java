@@ -18,32 +18,32 @@ import java.security.PublicKey;
  * @Time: 2018-10-23 22:20
  * @Feature: jwt配置参数
  */
-//@ConfigurationProperties(prefix = "leyou.jwt")
-@Configuration
+@ConfigurationProperties(prefix = "ly.jwt")
+//@Configuration
 public class JwtProperties {
 
     /**
      * 密钥
      */
-    @Value("${leyou.jwt.secret}")
+//    @Value("${ly.jwt.secret}")
     private String secret;
 
     /**
      * 公钥地址
      */
-    @Value("${leyou.jwt.pubKeyPath}")
+//    @Value("${ly.jwt.pubKeyPath}")
     private String pubKeyPath;
 
     /**
      * 私钥地址
      */
-    @Value("${leyou.jwt.priKeyPath}")
+//    @Value("${ly.jwt.priKeyPath}")
     private String priKeyPath;
 
     /**
      * token过期时间
      */
-    @Value("${leyou.jwt.expire}")
+//    @Value("${ly.jwt.expire}")
     private int expire;
 
     /**
@@ -59,13 +59,13 @@ public class JwtProperties {
     /**
      * cookie名字
      */
-    @Value("${leyou.jwt.cookieName}")
+//    @Value("${ly.jwt.cookieName}")
     private String cookieName;
 
     /**
      * cookie生命周期
      */
-    @Value("${leyou.jwt.cookieMaxAge}")
+//    @Value("${ly.jwt.cookieMaxAge}")
     private Integer cookieMaxAge;
 
     private static final Logger logger = LoggerFactory.getLogger(JwtProperties.class);

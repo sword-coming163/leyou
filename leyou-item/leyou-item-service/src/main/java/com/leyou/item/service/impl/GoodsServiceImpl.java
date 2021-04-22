@@ -20,6 +20,7 @@ import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
 
 import java.text.ParseException;
@@ -290,23 +291,34 @@ public class GoodsServiceImpl implements GoodsService {
     }
 
     @Override
-    public SpuDetail querySpuDetailBySpuId(long id) {
+    public SpuDetail querySpuDetailBySpuId(Long id) {
         return this.spuDetailMapper.selectByPrimaryKey(id);
     }
 
-    @Override
-    public List<Sku> querySkuBySpuId(Long id) {
-        Example example = new Example(Sku.class);
-        example.createCriteria().andEqualTo("spuId",id);
-        List<Sku> skuList = this.skuMapper.selectByExample(example);
-        for (Sku sku : skuList){
-            Example temp = new Example(Stock.class);
-            temp.createCriteria().andEqualTo("skuId", sku.getId());
-            Stock stock = this.stockMapper.selectByExample(temp).get(0);
-            sku.setStock(stock.getStock());
-        }
-        return skuList;
-    }
+//    @Override
+//    public List<Sku> querySkuBySpuId(Long id) {
+////        Example example = new Example(Sku.class);
+////        example.createCriteria().andEqualTo("spuId",id);
+////        List<Sku> skuList = this.skuMapper.selectByExample(example);
+////        for (Sku sku : skuList){
+////            Example temp = new Example(Stock.class);
+////            temp.createCriteria().andEqualTo("skuId", sku.getId());
+////            Stock stock = this.stockMapper.selectByExample(temp).get(0);
+////            sku.setStock(stock.getStock());
+////        }
+////        return skuList;
+//
+//    }
+public List<Sku> querySkuBySpuId(Long spuId) {
+    Sku sku = new Sku();
+    sku.setSpuId(spuId);
+    List<Sku> skus = this.skuMapper.select(sku);
+    skus.forEach(s -> {
+        Stock stock = this.stockMapper.selectByPrimaryKey(s.getId());
+        s.setStock(stock.getStock());
+    });
+    return skus;
+}
 
     /**
      * 发送消息到mq，生产者

@@ -5,12 +5,21 @@ spring:
     name: search-service
   data:
     elasticsearch:
-      cluster-name: elasticsearch
       cluster-nodes: 152.136.125.94:9300
+      cluster-name: elasticsearch
   rabbitmq:
+    host: 152.136.125.94
     username: guest
     password: guest
-    host: 152.136.125.94
+    template:
+      retry:
+        enabled: true
+        multiplier: 2
+        initial-interval: 10000ms
+        max-interval: 210000ms
+      exchange: leyou.item.exchange
+      publisher-confirms: true
+      port: 5672
   jackson:
     default-property-inclusion: non_null # 配置json处理时忽略空值
   resources:
@@ -32,3 +41,16 @@ eureka:
     ip-address: 127.0.0.1
     lease-expiration-duration-in-seconds: 10 #10秒不发送九过期
     lease-renewal-interval-in-seconds: 5 #每隔5秒发一次心跳
+ribbon:
+  ConnectTimeout: 40000 # 连接超时时间(ms)
+  ReadTimeout: 20000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 1 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 100000 # 熔断超时时长：10000ms

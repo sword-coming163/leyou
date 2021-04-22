@@ -16,7 +16,6 @@ import java.security.PublicKey;
  **/
 //@ConfigurationProperties(prefix = "leyou.jwt")
 @Configuration
-@RefreshScope
 public class JwtProperties {
 
     /**

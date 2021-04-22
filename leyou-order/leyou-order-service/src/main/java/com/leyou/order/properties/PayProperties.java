@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
  **/
 //@ConfigurationProperties(prefix = "leyou.pay")
 @Configuration
-@RefreshScope
 public class PayProperties {
 
     /**

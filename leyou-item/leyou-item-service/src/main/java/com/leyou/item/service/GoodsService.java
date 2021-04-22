@@ -61,7 +61,7 @@ public interface GoodsService {
      * @param id
      * @return
      */
-    SpuDetail querySpuDetailBySpuId(long id);
+    SpuDetail querySpuDetailBySpuId(Long id);
 
     /**
      * 根据Sku的id查询其下所有的sku

@@ -10,21 +10,15 @@ import org.springframework.context.annotation.Configuration;
  * @Time: 2018-10-22 18:34
  * @Feature: 短信服务实体类
  */
-//@ConfigurationProperties(prefix = "leyou.sms")
-@Configuration
-@RefreshScope
+@ConfigurationProperties(prefix = "ly.sms")
 public class SmsProperties {
 
-    @Value("${leyou.sms.accessKeyId}")
     private String accessKeyId;
 
-    @Value("${leyou.sms.accessKeySecret}")
     private String accessKeySecret;
 
-    @Value("${leyou.sms.signName}")
     private String signName;
 
-    @Value("${leyou.sms.verifyCodeTemplate}")
     private String verifyCodeTemplate;
 
     public String getAccessKeyId() {

@@ -29,7 +29,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping
-public class SearchController implements InitializingBean {
+public class SearchController  {
 
     @Autowired
     private SearchServiceImpl searchService;
@@ -53,38 +53,38 @@ public class SearchController implements InitializingBean {
         }
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        // 创建索引
-        this.elasticsearchTemplate.createIndex(Goods.class);
-        // 配置映射
-        this.elasticsearchTemplate.putMapping(Goods.class);
-
-        //加载数据
-        List<SpuBo> list = new ArrayList<>();
-        int page = 1;
-        int row = 100;
-        int size;
-        do {
-            //分页查询数据
-            PageResult<SpuBo> result = this.goodsClient.querySpuByPage(page, row, null, true, null, true);
-            List<SpuBo> spus = result.getItems();
-            size = spus.size();
-            page ++;
-            list.addAll(spus);
-        }while (size == 100);
-
-        //创建Goods集合
-        List<Goods> goodsList = new ArrayList<>();
-        //遍历spu
-        for (SpuBo spu : list) {
-            try {
-                Goods goods = this.searchService.buildGoods(spu);
-                goodsList.add(goods);
-            } catch (IOException e) {
-                System.out.println("查询失败：" + spu.getId());
-            }
-        }
-        this.goodsRepository.saveAll(goodsList);
-    }
+//    @Override
+//    public void afterPropertiesSet() throws Exception {
+//        // 创建索引
+//        this.elasticsearchTemplate.createIndex(Goods.class);
+//        // 配置映射
+//        this.elasticsearchTemplate.putMapping(Goods.class);
+//
+//        //加载数据
+//        List<SpuBo> list = new ArrayList<>();
+//        int page = 1;
+//        int row = 100;
+//        int size;
+//        do {
+//            //分页查询数据
+//            PageResult<SpuBo> result = this.goodsClient.querySpuByPage(page, row, null, true, null, true);
+//            List<SpuBo> spus = result.getItems();
+//            size = spus.size();
+//            page ++;
+//            list.addAll(spus);
+//        }while (size == 100);
+//
+//        //创建Goods集合
+//        List<Goods> goodsList = new ArrayList<>();
+//        //遍历spu
+//        for (SpuBo spu : list) {
+//            try {
+//                Goods goods = this.searchService.buildGoods(spu);
+//                goodsList.add(goods);
+//            } catch (IOException e) {
+//                System.out.println("查询失败：" + spu.getId());
+//            }
+//        }
+//        this.goodsRepository.saveAll(goodsList);
+//    }
 }

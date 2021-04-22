@@ -81,9 +81,12 @@ public class SearchServiceImpl implements SearchService {
         //1.查询商品分类名称
         List<String> names = this.categoryClient.queryNameByIds(Arrays.asList(spu.getCid1(),spu.getCid2(),spu.getCid3())).getBody();
         //2.查询sku
+//        System.out.println("11111111111111111");
         List<Sku> skus = this.goodsClient.querySkuBySpuId(spu.getId());
         //3.查询详情
+//        System.out.println(skus);
         SpuDetail spuDetail = this.goodsClient.querySpuDetailBySpuId(spu.getId());
+
 
         //4.处理sku,仅封装id，价格、标题、图片、并获得价格集合
         List<Long> prices = new ArrayList<>();

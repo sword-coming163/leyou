@@ -57,12 +57,6 @@ public class UploadServiceImpl implements UploadService {
                 return null;
             }
 
-//            File dir = new File("G:\\LeYou\\upload");
-//            if (!dir.exists()){
-//                dir.mkdirs();
-//            }
-//            file.transferTo(new File(dir, Objects.requireNonNull(file.getOriginalFilename())));
-
             StorePath storePath = this.storageClient.uploadFile(
                   file.getInputStream(), file.getSize(), getExtension(file.getOriginalFilename()), null);
 
