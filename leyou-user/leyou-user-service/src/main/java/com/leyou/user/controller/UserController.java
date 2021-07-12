@@ -64,6 +64,7 @@ public class UserController {
         if(result == null || !result){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
+//        return ResponseEntity.status(HttpStatus.CREATED).build();
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
@@ -77,6 +78,7 @@ public class UserController {
     @GetMapping("query")
     public ResponseEntity<User> queryUser(@RequestParam("username")String username,@RequestParam("password")String password){
         User user = this.userService.queryUser(username,password);
+        System.out.println(user);
         if (user == null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

@@ -15,6 +15,7 @@ import java.util.List;
  * @Time: 2018-10-24 16:55
  * @Feature: 过滤白名单
  */
+@Component
 @ConfigurationProperties(prefix = "ly.filter")
 //@Configuration
 public class FilterProperties {

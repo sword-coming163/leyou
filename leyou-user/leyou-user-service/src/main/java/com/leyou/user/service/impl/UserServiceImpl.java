@@ -77,7 +77,7 @@ public class UserServiceImpl implements UserService {
 //            System.out.println("11"+msg);
             this.amqpTemplate.convertAndSend("leyou.sms.exchange","sms.verify.code",msg);
 
-            //3.将code存入redis
+            //3.将code存入redis //过期时间5分钟
             this.stringRedisTemplate.opsForValue().set(KEY_PREFIX + phone,code,5, TimeUnit.MINUTES);
 
             return true;
@@ -127,6 +127,7 @@ public class UserServiceImpl implements UserService {
         /**
          * 逻辑改变，先去缓存中查询用户数据，查到的话直接返回，查不到再去数据库中查询，然后放入到缓存当中
          */
+//        System.out.println(username+password);
         //1.缓存中查询
         BoundHashOperations<String,Object,Object> hashOperations = this.stringRedisTemplate.boundHashOps(KEY_PREFIX2);
         String userStr = (String) hashOperations.get(username);
@@ -141,13 +142,19 @@ public class UserServiceImpl implements UserService {
             user =  JsonUtils.parse(userStr,User.class);
         }
 
-
+        System.out.println(user);
         //2.校验用户名
         if (user == null){
             return null;
         }
         //3. 校验密码
+        System.out.println(username);
+        System.out.println(password);
+        String passwor1d = CodecUtils.passwordBcryptEncode(username,password);
+        System.out.println(passwor1d);
+
         boolean result = CodecUtils.passwordConfirm(username + password,user.getPassword());
+        System.out.println(result);
         if (!result){
             return null;
         }

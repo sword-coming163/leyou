@@ -24,7 +24,7 @@ import java.util.List;
  * @Feature: 登录拦截器
  */
 @Component
-@EnableConfigurationProperties({JwtProperties.class,FilterProperties.class})
+//@EnableConfigurationProperties({JwtProperties.class,FilterProperties.class})
 public class LoginFilter extends ZuulFilter {
 
     @Autowired
@@ -64,6 +64,7 @@ public class LoginFilter extends ZuulFilter {
 
         //2.遍历允许访问的路径
         List<String> paths = Arrays.asList(this.filterProperties.getAllowPaths().split(" "));
+//        System.out.println(paths);
         for (String path : paths){
             if (requestUri.startsWith(path)){
                 flag = true;
@@ -76,11 +77,13 @@ public class LoginFilter extends ZuulFilter {
     @Override
     public Object run() throws ZuulException {
         //1.获取上下文
+//        System.out.println("过滤器");
         RequestContext context = RequestContext.getCurrentContext();
         //2.获取request
         HttpServletRequest request = context.getRequest();
         //3.获取token
         String token = CookieUtils.getCookieValue(request,this.properties.getCookieName());
+//        System.out.println(token);
         //4.校验
         try{
             //4.1 校验通过，放行

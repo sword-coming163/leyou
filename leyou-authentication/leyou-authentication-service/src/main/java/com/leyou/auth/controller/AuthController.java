@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +26,6 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
-
     @Autowired
     private JwtProperties properties;
 
@@ -47,13 +45,15 @@ public class AuthController {
             HttpServletResponse response
     ){
         //1.登录校验
+        System.out.println(username+password);
         String token = this.authService.authentication(username,password);
+        System.out.println(token);
         if (StringUtils.isBlank(token)){
             return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
         }
         //2.将token写入cookie，并指定httpOnly为true，防止通过js获取和修改
         CookieUtils.setCookie(request,response,properties.getCookieName(),token,properties.getCookieMaxAge(),true);
-
+//        System.out.println();
         return ResponseEntity.ok().build();
     }
 

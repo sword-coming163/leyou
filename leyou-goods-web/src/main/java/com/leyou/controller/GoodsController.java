@@ -45,7 +45,7 @@ public class GoodsController {
 
     private static String KEY_PREFIX = "leyou:goods:detail:";
 
-    @GetMapping(value = "{id}.html",produces = "text/html")
+    @GetMapping(value = "{id}.html")
 //    @ResponseBody
     public String toItemPage(HttpServletRequest request, HttpServletResponse response, Model model, @PathVariable("id")String id) throws InterruptedException, ExecutionException {
         Long idN = Long.parseLong(id);

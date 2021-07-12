@@ -9,12 +9,12 @@ import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
 import org.apache.catalina.connector.ClientAbortException;
 
 public class smsTest {
-    public SendSmsResponse sendSms(String phone,String code,String signName,String template) throws ClientAbortException {
+    public SendSmsResponse sendSms(String phone, String code, String signName, String template) throws ClientAbortException {
 
         try{
-
-            Credential cred = new Credential("AKIDQcYv20rEajdPu9P4eo23ISk25sQp66d2","SSDuY2HJBzXuqYCNIx1qpbQwKjibEb9S");
-
+            System.out.println("短信执行了1");
+            Credential cred = new Credential("AKIDQcYv20rEajdPu9P4eo23ISk25sQp66d2", "SSDuY2HJBzXuqYCNIx1qpbQwKjibEb9S");
+//            Credential cred = new Credential(properties.getAccessKeyId(),properties.getAccessKeySecret());
             HttpProfile httpProfile = new HttpProfile();
             httpProfile.setEndpoint("sms.tencentcloudapi.com");
 
@@ -24,16 +24,18 @@ public class smsTest {
             SmsClient client = new SmsClient(cred, "", clientProfile);
 
             SendSmsRequest req = new SendSmsRequest();
-            String[] phoneNumberSet1 = {phone};
+            String phone0 = "+86"+phone;
+            String[] phoneNumberSet1 = {phone0};
             req.setPhoneNumberSet(phoneNumberSet1);
 
             req.setTemplateID(template);
             req.setSmsSdkAppid("1400509923");
             req.setSign(signName);
-            String[] templateParams = {code};
+            String[] templateParams = {code,"5"};
             req.setTemplateParamSet(templateParams);
 
             SendSmsResponse resp = client.SendSms(req);
+            System.out.println("发送了");
             return resp;
 
         } catch (TencentCloudSDKException e) {

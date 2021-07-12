@@ -32,7 +32,6 @@
         <version>2.0.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -58,7 +57,7 @@
         <wxpay.version>0.0.3</wxpay.version>
         <swagger.version>2.8.0</swagger.version>
         <mongodb.version>2.1.0.RELEASE</mongodb.version>
-        <spring.config.version>2.0.0.RELEASE</spring.config.version>
+<!--        <spring.config.version>2.0.0.RELEASE</spring.config.version>-->
     </properties>
 
     <dependencyManagement>
@@ -209,38 +208,38 @@
                 <version>2.1.2.RELEASE</version>
             </dependency>
 
-            <!--配置组件服务端-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-config-server</artifactId>
-                <version>${spring.config.version}</version>
-            </dependency>
+<!--            &lt;!&ndash;配置组件服务端&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-config-server</artifactId>-->
+<!--                <version>${spring.config.version}</version>-->
+<!--            </dependency>-->
 
-            <!--配置组件客户端-->
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-starter-config</artifactId>
-                <version>${spring.config.version}</version>
-            </dependency>
+<!--            &lt;!&ndash;配置组件客户端&ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-starter-config</artifactId>-->
+<!--                <version>${spring.config.version}</version>-->
+<!--            </dependency>-->
 
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-bus</artifactId>
-                <version>${spring.config.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-bus</artifactId>-->
+<!--                <version>${spring.config.version}</version>-->
+<!--            </dependency>-->
 
-            <dependency>
-                <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
-                <version>${spring.config.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.cloud</groupId>-->
+<!--                <artifactId>spring-cloud-stream-binder-rabbit</artifactId>-->
+<!--                <version>${spring.config.version}</version>-->
+<!--            </dependency>-->
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-actuator</artifactId>
-                <version>${spring.config.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-starter-actuator</artifactId>-->
+<!--                <version>${spring.config.version}</version>-->
+<!--            </dependency>-->
 
         </dependencies>
     </dependencyManagement>
@@ -251,14 +250,11 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-
-
             </plugin>
         </plugins>
     </build>

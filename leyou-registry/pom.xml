@@ -29,7 +29,6 @@
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
-
     <build>
         <finalName>app</finalName>
         <plugins>

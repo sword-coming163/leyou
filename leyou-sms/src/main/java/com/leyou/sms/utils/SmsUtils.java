@@ -15,15 +15,17 @@ import org.springframework.stereotype.Component;;
 @Component
 @EnableConfigurationProperties(SmsProperties.class)
 public class SmsUtils {
-    @Autowired
-    private static SmsProperties properties;
 
-    public static SendSmsResponse sendSms(String phone, String code, String signName, String template) throws ClientAbortException {
+//    @Autowired
+    private  SmsProperties properties;
+
+
+    public SendSmsResponse sendSms(String phone, String code, String signName, String template) throws ClientAbortException {
 
         try{
             System.out.println("短信执行了1");
             Credential cred = new Credential("AKIDQcYv20rEajdPu9P4eo23ISk25sQp66d2", "SSDuY2HJBzXuqYCNIx1qpbQwKjibEb9S");
-
+//            Credential cred = new Credential(properties.getAccessKeyId(),properties.getAccessKeySecret());
             HttpProfile httpProfile = new HttpProfile();
             httpProfile.setEndpoint("sms.tencentcloudapi.com");
 

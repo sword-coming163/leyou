@@ -3,6 +3,7 @@ package com.leyou.config;
 
 import com.leyou.auth.utils.RsaUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import java.security.PublicKey;
@@ -12,6 +13,7 @@ import java.security.PublicKey;
  * @Time: 2018-10-24 16:12
  * @Feature: jwt属性
  */
+@Component
 @ConfigurationProperties(prefix = "ly.jwt")
 public class JwtProperties {
 

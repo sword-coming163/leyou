@@ -39,14 +39,13 @@ public class JwtTest {
     @Test
     public void testGenerateToken() throws Exception {
         // 生成token
-        String token = JwtUtils.generateToken(new UserInfo(20L, "jack"), privateKey, 5);
+        String token = JwtUtils.generateToken(new UserInfo(5040L, "zhangsan"), privateKey, 5);
         System.out.println("token = " + token);
     }
 
     @Test
     public void testParseToken() throws Exception {
-        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6MjAsInVzZXJuYW1lIjoiamFjayIsImV4cCI6MTYxODYyODI4Mn0.Nzs-IKCfXkPH0AZaGB5lzQi0ZxC3Ai8QGwBhtgQJLyvQmjPdHN0sMNk04aiWGeB4KgbHSRQcdl7MjGFfb77PDbU5VzxqX8vu9ms8cfVUVwLI0VayhaeTkbqJeVeJR-EK8LclItBRlqzZEA_N1fpdnzqb9U3zJQuuYqacMICUoUA";
-
+        String token = "eyJhbGciOiJSUzI1NiJ9.eyJpZCI6NTA0MCwidXNlcm5hbWUiOiJ6aGFuZ3NhbiIsImV4cCI6MTYyNDU5Nzg3OX0.Lo8fKc_ny4oXR6euI2hHclC87RmZIKn5N0--4R04eGTjBPF667GcC8W4q7WR-V2AJTxNmrZiLyChiFMsQKB12wLQcJIE-GZET0RXqusP8tJvkRBP2k-83HhruRF5ESGuHpK9BjTiKu-mlJ6ql2qs5T3TVmq0cO6jQihD98pI93w";
         // 解析token
         UserInfo user = JwtUtils.getInfoFromToken(token, publicKey);
         System.out.println("id: " + user.getId());

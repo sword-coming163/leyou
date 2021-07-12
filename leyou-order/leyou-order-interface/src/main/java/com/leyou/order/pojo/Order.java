@@ -1,8 +1,5 @@
 package com.leyou.order.pojo;
 
-
-
-
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
